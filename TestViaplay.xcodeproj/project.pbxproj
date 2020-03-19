@@ -99,13 +99,9 @@
 		2BBF8B2B2423B771003E1891 /* TestViaplay */ = {
 			isa = PBXGroup;
 			children = (
-				2BBF8B2C2423B771003E1891 /* AppDelegate.swift */,
-				2BBF8B2E2423B771003E1891 /* SceneDelegate.swift */,
+				2BBF8B5D2423B823003E1891 /* App */,
+				2BBF8B5C2423B805003E1891 /* Resources */,
 				2BBF8B302423B771003E1891 /* ViewController.swift */,
-				2BBF8B322423B771003E1891 /* Main.storyboard */,
-				2BBF8B352423B772003E1891 /* Assets.xcassets */,
-				2BBF8B372423B772003E1891 /* LaunchScreen.storyboard */,
-				2BBF8B3A2423B772003E1891 /* Info.plist */,
 			);
 			path = TestViaplay;
 			sourceTree = "<group>";
@@ -126,6 +122,26 @@
 				2BBF8B502423B772003E1891 /* Info.plist */,
 			);
 			path = TestViaplayUITests;
+			sourceTree = "<group>";
+		};
+		2BBF8B5C2423B805003E1891 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF8B322423B771003E1891 /* Main.storyboard */,
+				2BBF8B352423B772003E1891 /* Assets.xcassets */,
+				2BBF8B372423B772003E1891 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BBF8B5D2423B823003E1891 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF8B2C2423B771003E1891 /* AppDelegate.swift */,
+				2BBF8B2E2423B771003E1891 /* SceneDelegate.swift */,
+				2BBF8B3A2423B772003E1891 /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TestViaplay/Info.plist;
+				INFOPLIST_FILE = TestViaplay/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TestViaplay/Info.plist;
+				INFOPLIST_FILE = TestViaplay/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
