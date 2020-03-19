@@ -9,8 +9,11 @@
 import UIKit
 
 extension UIStoryboard {
+    
+    // MARK: Storyboards
     static var mainSB: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
 
+    // MARK: View Controllers
     static var startVC: StartVC { return mainSB.instantiateViewController(identifier: "StartVC_ID") as! StartVC }
-
+    static var sectionCVC: SectionCVC { return mainSB.instantiateViewController(identifier: "SectionCVC_ID") as! SectionCVC }
 }

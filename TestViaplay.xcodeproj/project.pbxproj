@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B2C2423B771003E1891 /* AppDelegate.swift */; };
-		2BBF8B312423B771003E1891 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B302423B771003E1891 /* ViewController.swift */; };
 		2BBF8B342423B771003E1891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B322423B771003E1891 /* Main.storyboard */; };
 		2BBF8B362423B772003E1891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B352423B772003E1891 /* Assets.xcassets */; };
 		2BBF8B392423B772003E1891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B372423B772003E1891 /* LaunchScreen.storyboard */; };
@@ -16,6 +15,7 @@
 		2BBF8B4F2423B772003E1891 /* TestViaplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B4E2423B772003E1891 /* TestViaplayUITests.swift */; };
 		2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B5F2423B8C4003E1891 /* UIStoryboard+Extension.swift */; };
 		2BBF8B662423B963003E1891 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B652423B963003E1891 /* StartVC.swift */; };
+		2BBF8B682423BAF8003E1891 /* SectionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B672423BAF8003E1891 /* SectionCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		2BBF8B292423B771003E1891 /* TestViaplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViaplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF8B2C2423B771003E1891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2BBF8B302423B771003E1891 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BBF8B332423B771003E1891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BBF8B352423B772003E1891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BBF8B382423B772003E1891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		2BBF8B502423B772003E1891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF8B5F2423B8C4003E1891 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		2BBF8B652423B963003E1891 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		2BBF8B672423BAF8003E1891 /* SectionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,6 @@
 				2BBF8B622423B939003E1891 /* Components */,
 				2BBF8B5E2423B897003E1891 /* Libs */,
 				2BBF8B5C2423B805003E1891 /* Resources */,
-				2BBF8B302423B771003E1891 /* ViewController.swift */,
 			);
 			path = TestViaplay;
 			sourceTree = "<group>";
@@ -162,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBF8B652423B963003E1891 /* StartVC.swift */,
+				2BBF8B672423BAF8003E1891 /* SectionCVC.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -318,8 +318,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBF8B682423BAF8003E1891 /* SectionCVC.swift in Sources */,
 				2BBF8B662423B963003E1891 /* StartVC.swift in Sources */,
-				2BBF8B312423B771003E1891 /* ViewController.swift in Sources */,
 				2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */,
 				2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */,
 			);
