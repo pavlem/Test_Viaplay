@@ -8,10 +8,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
 
 class SectionCVC: UICollectionViewController {
+    
+    // MARK: - Properties
+    private let reuseIdentifier = "SectionCell_ID"
+    private let mocSections = ["Moview", "Series", "Sport 1", "Sport 2", "Sport 3", "Sport 4", "Sport 5", "Sport 5", "Sport 6"]
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +23,7 @@ class SectionCVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -34,26 +38,7 @@ class SectionCVC: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
-    }
 
     // MARK: UICollectionViewDelegate
 
@@ -86,4 +71,29 @@ class SectionCVC: UICollectionViewController {
     }
     */
 
+}
+
+// MARK: UICollectionViewDataSource
+extension SectionCVC {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return mocSections.count
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCell
+        cell.sectionName.text = mocSections[indexPath.row]
+        cell.backgroundColor = .orange
+        return cell
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension SectionCVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+           layout collectionViewLayout: UICollectionViewLayout,
+           sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = (view.frame.width-20)/2
+        return CGSize(width: width, height: width)
+    }
 }

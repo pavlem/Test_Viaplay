@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +34,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="138"/>
+            <point key="canvasLocation" x="-290" y="128"/>
+        </scene>
+        <!--SectionCVC-->
+        <scene sceneID="zxr-ha-ZBf">
+            <objects>
+                <collectionViewController storyboardIdentifier="SectionCVC_ID" id="gi2-h7-fTB" customClass="SectionCVC" customModule="TestViaplay" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uTo-3M-t5S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cYT-Np-4YD">
+                            <size key="itemSize" width="152" height="145"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell_ID" id="IPf-qF-Ete" customClass="SectionCell" customModule="TestViaplay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6ee-eo-sYC">
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="145"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Txt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDB-bi-XNs">
+                                            <rect key="frame" x="64" y="62" width="24" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="PDB-bi-XNs" firstAttribute="centerX" secondItem="6ee-eo-sYC" secondAttribute="centerX" id="CaE-xg-Ppb"/>
+                                        <constraint firstItem="PDB-bi-XNs" firstAttribute="centerY" secondItem="6ee-eo-sYC" secondAttribute="centerY" id="mQV-A4-wYw"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="152" height="145"/>
+                                <connections>
+                                    <outlet property="sectionName" destination="PDB-bi-XNs" id="3tL-bT-26m"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="gi2-h7-fTB" id="U7J-sp-VSA"/>
+                            <outlet property="delegate" destination="gi2-h7-fTB" id="oEz-t0-B3z"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXN-vR-DvP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479.71014492753625" y="127.90178571428571"/>
         </scene>
     </scenes>
 </document>
