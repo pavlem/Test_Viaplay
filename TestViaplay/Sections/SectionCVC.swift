@@ -34,6 +34,7 @@ class SectionCVC: UICollectionViewController {
         super.viewWillDisappear(animated)
         
         dataTask?.cancel()
+        BlockScreen.hideBlocker()
     }
     
     // MARK: - Helper
@@ -47,13 +48,19 @@ class SectionCVC: UICollectionViewController {
     }
     
     private func fetchSections() {
+        
+        BlockScreen(title: "Fetching the sections...").showBlocker {}
+        
         self.dataTask = sectionsService.getSection(completion: { [weak self] (sectionResponse, serRrr) in
             guard let `self` = self else { return }
             
             guard let sections = sectionResponse?.links?.viaplaySections else { return }
             self.sections = sections
             
+            sleep(1) // This is for a simulation purpose only...
+            
             DispatchQueue.main.async {
+                BlockScreen.hideBlocker()
                 self.collectionView.reloadData()
             }
         })

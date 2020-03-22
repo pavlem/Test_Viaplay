@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */; };
 		2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */; };
+		2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCD1242805E400AE52B0 /* BlockScreen.swift */; };
 		2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B2C2423B771003E1891 /* AppDelegate.swift */; };
 		2BBF8B342423B771003E1891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B322423B771003E1891 /* Main.storyboard */; };
 		2BBF8B362423B772003E1891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B352423B772003E1891 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReq.swift; sourceTree = "<group>"; };
 		2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResponse.swift; sourceTree = "<group>"; };
+		2B8ABCD1242805E400AE52B0 /* BlockScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockScreen.swift; sourceTree = "<group>"; };
 		2BBF8B292423B771003E1891 /* TestViaplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViaplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF8B2C2423B771003E1891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF8B332423B771003E1891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		2BBF8B622423B939003E1891 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B8ABCD1242805E400AE52B0 /* BlockScreen.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */,
 				2BBF8B682423BAF8003E1891 /* SectionCVC.swift in Sources */,
 				2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */,
+				2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */,
 				2BCEC17E2425124E00E4C6B0 /* ReachabilityHelper.swift in Sources */,
 				2BBF8B662423B963003E1891 /* StartVC.swift in Sources */,
 				2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */,
