@@ -11,16 +11,19 @@ import UIKit
 class StartVC: UIViewController {
 
     // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setUI()
+    }
+    
+    // MARK: - Actions
+    private func setUI() {
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - Actions
     @IBAction func start(_ sender: UIButton) {
-        
-        let sectionCVC = UIStoryboard.sectionCVC
-        navigationController?.pushViewController(sectionCVC, animated: true)
-        print("Start.............")
+        navigationController?.pushViewController(UIStoryboard.sectionCVC, animated: true)
     }
 }

@@ -17,14 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHa-uk-2yK">
-                                <rect key="frame" x="139" y="438" width="136" height="30"/>
+                                <rect key="frame" x="125" y="436.5" width="164" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="START streaming...."/>
                                 <connections>
                                     <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MjQ-xn-SqL"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bHa-uk-2yK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rOD-3S-uKx"/>
                             <constraint firstItem="bHa-uk-2yK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="xdE-RM-YaQ"/>
