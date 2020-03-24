@@ -30,9 +30,9 @@ class SectionsService: ContentServer {
     }
     
     
-    func getSection(completion: @escaping (SectionsResponse?, ServiceError?) -> Void) -> URLSessionDataTask? {
+    func getSection(path: String, completion: @escaping (SectionResponse?, ServiceError?) -> Void) -> URLSessionDataTask? {
         
-        return client.load(path: ServiceEndpoint.ios, method: .get, params: nil, headers: nil) { (jsonObject, data, serviceErr) in
+        return client.load(path: ServiceEndpoint.ios + path, method: .get, params: nil, headers: nil) { (jsonObject, data, serviceErr) in
 
             guard jsonObject != nil else {
                 completion(nil, serviceErr)
@@ -40,7 +40,7 @@ class SectionsService: ContentServer {
             }
 
             do {
-                let sectionResponse = try JSONDecoder().decode(SectionsResponse.self, from: data!)
+                let sectionResponse = try JSONDecoder().decode(SectionResponse.self, from: data!)
                 completion(sectionResponse, serviceErr)
             } catch let jsonErr {
                 print("Error serializing json:", jsonErr)

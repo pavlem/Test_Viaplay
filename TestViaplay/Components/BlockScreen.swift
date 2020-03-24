@@ -70,6 +70,7 @@ class BlockScreen: UIView {
     
     private func setActivityIndicatorAndInfoLbl(lblTxt: String?) {
         let activityView = UIActivityIndicatorView(style: .large)
+        activityView.color = .white
         activityView.center = center
         addSubview(activityView)
         activityView.startAnimating()

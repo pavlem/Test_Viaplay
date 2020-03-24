@@ -47,13 +47,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cYT-Np-4YD">
                             <size key="itemSize" width="152" height="145"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="114"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionCell_ID" id="IPf-qF-Ete" customClass="SectionCell" customModule="TestViaplay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="152" height="145"/>
+                                <rect key="frame" x="0.0" y="114" width="152" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6ee-eo-sYC">
                                     <rect key="frame" x="0.0" y="0.0" width="152" height="145"/>
@@ -77,6 +77,38 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CartHeaderCollectionReusableView_ID" id="APH-Hz-xuC" customClass="SectionCVCHeader" customModule="TestViaplay" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovy-WP-dfM">
+                                    <rect key="frame" x="191.5" y="8" width="31" height="17"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK3-Ou-J2C">
+                                    <rect key="frame" x="170" y="33" width="74" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="yK3-Ou-J2C" firstAttribute="top" secondItem="ovy-WP-dfM" secondAttribute="bottom" constant="8" id="1oT-nJ-N4Q"/>
+                                <constraint firstItem="ovy-WP-dfM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="APH-Hz-xuC" secondAttribute="leading" constant="16" id="21S-CS-KJD"/>
+                                <constraint firstItem="ovy-WP-dfM" firstAttribute="top" secondItem="APH-Hz-xuC" secondAttribute="top" constant="8" id="4aS-ui-4MM"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yK3-Ou-J2C" secondAttribute="trailing" constant="16" id="GMO-gj-i4z"/>
+                                <constraint firstItem="yK3-Ou-J2C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="APH-Hz-xuC" secondAttribute="leading" constant="16" id="N9O-g4-X0c"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ovy-WP-dfM" secondAttribute="trailing" constant="16" id="W9L-iH-d5l"/>
+                                <constraint firstItem="ovy-WP-dfM" firstAttribute="centerX" secondItem="APH-Hz-xuC" secondAttribute="centerX" id="jGo-rJ-x0D"/>
+                                <constraint firstItem="yK3-Ou-J2C" firstAttribute="centerX" secondItem="ovy-WP-dfM" secondAttribute="centerX" id="tc8-rA-08p"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="descriptionLbl" destination="yK3-Ou-J2C" id="1f7-w9-Z1N"/>
+                                <outlet property="title" destination="ovy-WP-dfM" id="GXb-iZ-9J0"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="gi2-h7-fTB" id="U7J-sp-VSA"/>
                             <outlet property="delegate" destination="gi2-h7-fTB" id="oEz-t0-B3z"/>
