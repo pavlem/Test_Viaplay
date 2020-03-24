@@ -49,15 +49,13 @@ class SectionCVC: UICollectionViewController {
     }
     
     private func fetchSections() {
-        
-        BlockScreen(title: "Fetching the sections...").showBlocker {}
+
+        BlockScreen(title: "Fetching the sections...").showBlocker(isOverEntireDeviceWindow: false) {}
         
         self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionResponse, serRrr) in
             guard let `self` = self else { return }
             
             // TODO: Error handling
-            
-            sleep(3)
             
             guard let sectionResponse = sectionResponse else { return }
             guard let sections = sectionResponse.links?.viaplaySections else { return }
@@ -65,6 +63,7 @@ class SectionCVC: UICollectionViewController {
             self.sections = sections.map({SectionItemVM(sectionsResponseItem: $0)})
             self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionResponse)
             
+            sleep(2)
             DispatchQueue.main.async {
                 BlockScreen.hideBlocker()
                 self.collectionView.reloadData()

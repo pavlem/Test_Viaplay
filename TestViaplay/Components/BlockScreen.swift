@@ -11,8 +11,11 @@ import UIKit
 class BlockScreen: UIView {
     
     // MARK: - API
-    func showBlocker(success: @escaping () -> Void) {
+    func showBlocker(isOverEntireDeviceWindow: Bool = false, success: @escaping () -> Void) {
         guard let topVC = BlockScreen.topVC else { return }
+        if isOverEntireDeviceWindow, let nc = topVC as? UINavigationController {
+            nc.navigationBar.layer.zPosition = -1;
+        }
         topVC.view.addSubview(self)
         alpha = 0
         
@@ -24,6 +27,12 @@ class BlockScreen: UIView {
     
     static func hideBlocker() {
         guard let topVC = BlockScreen.topVC else { return }
+        
+        if let nc = topVC as? UINavigationController {
+            nc.navigationBar.layer.zPosition = +1;
+            print("s")
+        }
+        
         for view in topVC.view.subviews where view is BlockScreen {
             view.removeFromSuperview()
         }
@@ -46,29 +55,30 @@ class BlockScreen: UIView {
     // MARK: - Inits
     convenience init(title: String?) {
         self.init(frame: UIScreen.main.bounds)
+        
         self.infoTxt = title
-        setupView()
+        setupView(message: self.infoTxt)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        setupView()
     }
     
     // MARK: - Helper
-    private func setupView() {
+    private func setupView(message: String?) {
         backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        setActivityIndicatorAndInfoLbl(lblTxt: self.infoTxt)
+        
+        if let msg = message {
+            setActivityIndicatorAndInfoLbl(lblTxt: msg)
+        }
     }
     
-    private func setActivityIndicatorAndInfoLbl(lblTxt: String?) {
+    private func setActivityIndicatorAndInfoLbl(lblTxt: String?, view: UIView? = nil) {
         let activityView = UIActivityIndicatorView(style: .large)
         activityView.color = .white
         activityView.center = center
