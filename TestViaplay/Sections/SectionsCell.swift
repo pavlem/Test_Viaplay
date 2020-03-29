@@ -11,7 +11,7 @@ import UIKit
 class SectionsCell: UICollectionViewCell {
     
     // MARK: - API
-    var sectionItemVM: SectionItemVM? {
+    var sectionItemVM: SectionsItemVM? {
         willSet {
             guard let newValue = newValue else { return }
             setUI(newValue: newValue)
@@ -29,7 +29,7 @@ class SectionsCell: UICollectionViewCell {
     }
     
     // MARK: - Helper
-    private func setUI(newValue: SectionItemVM) {
+    private func setUI(newValue: SectionsItemVM) {
         sectionName.text = newValue.title
     }
     

@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct SectionItemVM {
+struct SectionsItemVM {
     let url: String
     let title: String
 }
 
-extension SectionItemVM {
+extension SectionsItemVM {
     init(sectionsResponseItem: SectionsResponseItem) {
         self.url = sectionsResponseItem.href ?? ""
         self.title = sectionsResponseItem.title ?? ""
     }
 }
 
-extension SectionItemVM {
+extension SectionsItemVM {
     var path: String {
         var sectionUrl = self.url
         let stringsToRemove = ["https://content.viaplay.se/ios-se", "{?dtg}"]
