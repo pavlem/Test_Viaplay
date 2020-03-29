@@ -11,12 +11,19 @@ import UIKit
 class SectionTVC: UITableViewController {
     
     // MARK: - API
-    var sectionItemsVM = [SectionItemVM]() {
+    var selectedSection: SectionsItemVM?
+    
+    // MARK: - Properties
+    // MARK: Constants
+    private let sectionsService = SectionsService()
+    // MARK: Vars
+    private var dataTask: URLSessionDataTask?
+    // MARK: Calculated
+    private var sectionItemsVM = [SectionItemVM]() {
         willSet {
-            
-            sleep(1) // Simulation
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                BlockScreen.hideBlocker()
             }
         }
     }
@@ -26,11 +33,46 @@ class SectionTVC: UITableViewController {
         super.viewDidLoad()
 
         setUI()
+        fetchSectionItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        BlockScreen().showBlocker(messageText: "Fetching: " + selectedSection!.title) {}
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        dataTask?.cancel()
+        BlockScreen.hideBlocker()
     }
 
     // MARK: - Helper
+    private func fetchSectionItems() {
+        dataTask = sectionsService.getSection(path: selectedSection!.path) { (sectionResponse, serverError) in
+            sleep(2) // Simulate slower data fetch
+
+            guard serverError == nil else {
+                self.handle(error: serverError)
+                return
+            }
+            
+            guard let sectionResponse = sectionResponse else { return }
+            guard let sectionItems = sectionResponse.links?.viaplayCategoryFilters?.map({SectionItemVM(sectionResponseItem: $0)}) else { return }
+            self.sectionItemsVM = sectionItems
+
+            // TODO: SectionTVC header
+        }
+    }
+    
     private func setUI() {
         tableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    private func handle(error: ServiceError?) {
+        print(error ?? "")
     }
 }
 

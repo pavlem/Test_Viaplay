@@ -35,11 +35,8 @@ class SectionCell: UITableViewCell {
     }
     
     private func setUI() {
-//        contentView.backgroundColor = .white
-        
         titleLbl.font = UIFont.boldSystemFont(ofSize: 17)
         typeLbl.font = UIFont.systemFont(ofSize: 17)
-        
         titleLbl.textColor = .black
         typeLbl.textColor = .black
     }

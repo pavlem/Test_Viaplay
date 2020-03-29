@@ -34,7 +34,7 @@ class SectionsCVC: UICollectionViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-//        dataTask?.cancel() // TODO: Fix this
+        dataTask?.cancel()
         BlockScreen.hideBlocker()
     }
     
@@ -104,26 +104,9 @@ extension SectionsCVC {
 // MARK: UICollectionViewDelegate
 extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        BlockScreen().showBlocker(messageText: "Fetching: " + sections[indexPath.row].title) {}
-        
-        navigationController?.pushViewController(UIStoryboard.sectionTVC, animated: true)
-
-        let selectedSection = self.sections[indexPath.row]
-
-        dataTask = sectionsService.getSection(path: selectedSection.path) { (sectionResponse, serverError) in
-            guard serverError == nil else { return } // TODO: Error handling
-            guard let sectionResponse = sectionResponse else { return }
-            guard let sectionItems = sectionResponse.links?.viaplayCategoryFilters?.map({SectionItemVM(sectionResponseItem: $0)}) else { return }
-            self.sectionTVC?.sectionItemsVM = sectionItems
-            
-            
-            // TODO: SectionTVC header
-        }
-    }
-    
-    private var sectionTVC: SectionTVC? {
-        return navigationController?.viewControllers.last as? SectionTVC
+        let sectionTVC = UIStoryboard.sectionTVC
+        sectionTVC.selectedSection = self.sections[indexPath.row]
+        navigationController?.pushViewController(sectionTVC, animated: true)
     }
 }
 
