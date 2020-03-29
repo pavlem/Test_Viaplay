@@ -32,6 +32,9 @@
 		2BCEC1832425133500E4C6B0 /* ContentServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC1822425133500E4C6B0 /* ContentServer.swift */; };
 		2BCEC185242514A500E4C6B0 /* SectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC184242514A500E4C6B0 /* SectionService.swift */; };
 		2BCEC1872425155E00E4C6B0 /* SectionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC1862425155E00E4C6B0 /* SectionsResponse.swift */; };
+		2BD9A0092431190500D1494C /* SectionItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A0082431190500D1494C /* SectionItemVM.swift */; };
+		2BD9A00B24311CAD00D1494C /* SectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A00A24311CAD00D1494C /* SectionTVC.swift */; };
+		2BD9A00D24311CBC00D1494C /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A00C24311CBC00D1494C /* SectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		2BCEC1822425133500E4C6B0 /* ContentServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentServer.swift; sourceTree = "<group>"; };
 		2BCEC184242514A500E4C6B0 /* SectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionService.swift; sourceTree = "<group>"; };
 		2BCEC1862425155E00E4C6B0 /* SectionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsResponse.swift; sourceTree = "<group>"; };
+		2BD9A0082431190500D1494C /* SectionItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItemVM.swift; sourceTree = "<group>"; };
+		2BD9A00A24311CAD00D1494C /* SectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTVC.swift; sourceTree = "<group>"; };
+		2BD9A00C24311CBC00D1494C /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +203,8 @@
 				2BBF8B672423BAF8003E1891 /* SectionsCVC.swift */,
 				2BBF8B692423BE0C003E1891 /* SectionsCell.swift */,
 				2B4B5A4924292AAC004E16EC /* SectionsCVCHeader.swift */,
+				2BD9A00A24311CAD00D1494C /* SectionTVC.swift */,
+				2BD9A00C24311CBC00D1494C /* SectionCell.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 			children = (
 				2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */,
 				2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */,
+				2BD9A0082431190500D1494C /* SectionItemVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -401,6 +410,7 @@
 				2BCEC17B2425124D00E4C6B0 /* ServiceError.swift in Sources */,
 				2B4B5A4E2429357D004E16EC /* SectionsItemVM.swift in Sources */,
 				2B4B5A4C24293184004E16EC /* SectionCVCHeaderVM.swift in Sources */,
+				2BD9A00B24311CAD00D1494C /* SectionTVC.swift in Sources */,
 				2BCEC1832425133500E4C6B0 /* ContentServer.swift in Sources */,
 				2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */,
 				2BBF8B682423BAF8003E1891 /* SectionsCVC.swift in Sources */,
@@ -408,11 +418,13 @@
 				2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */,
 				2BCEC17E2425124E00E4C6B0 /* ReachabilityHelper.swift in Sources */,
 				2B4B5A4A24292AAC004E16EC /* SectionsCVCHeader.swift in Sources */,
+				2BD9A00D24311CBC00D1494C /* SectionCell.swift in Sources */,
 				2BBF8B662423B963003E1891 /* StartVC.swift in Sources */,
 				2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */,
 				2BBF8B6A2423BE0C003E1891 /* SectionsCell.swift in Sources */,
 				2BCEC17C2425124D00E4C6B0 /* Encodable+Extension.swift in Sources */,
 				2BCEC17A2425124D00E4C6B0 /* WebClient.swift in Sources */,
+				2BD9A0092431190500D1494C /* SectionItemVM.swift in Sources */,
 				2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */,
 				2BCEC17D2425124D00E4C6B0 /* Reachability.swift in Sources */,
 				2BCEC1792425124D00E4C6B0 /* ServiceHelper.swift in Sources */,

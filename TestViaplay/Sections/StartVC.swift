@@ -24,6 +24,6 @@ class StartVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func start(_ sender: UIButton) {
-        navigationController?.pushViewController(UIStoryboard.sectionCVC, animated: true)
+        navigationController?.pushViewController(UIStoryboard.sectionsCVC, animated: true)
     }
 }

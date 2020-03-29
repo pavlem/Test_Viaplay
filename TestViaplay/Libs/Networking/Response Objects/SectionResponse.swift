@@ -10,6 +10,7 @@ import Foundation
 
 struct SectionResponseItem: Decodable {
     let title: String?
+    let type: String?
     let href: String?
 }
 
