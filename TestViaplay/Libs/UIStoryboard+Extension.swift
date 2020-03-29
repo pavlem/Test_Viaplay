@@ -15,5 +15,5 @@ extension UIStoryboard {
 
     // MARK: View Controllers
     static var startVC: StartVC { return mainSB.instantiateViewController(identifier: "StartVC_ID") as! StartVC }
-    static var sectionCVC: SectionCVC { return mainSB.instantiateViewController(identifier: "SectionCVC_ID") as! SectionCVC }
+    static var sectionCVC: SectionsCVC { return mainSB.instantiateViewController(identifier: "SectionsCVC_ID") as! SectionsCVC }
 }

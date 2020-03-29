@@ -21,8 +21,8 @@
 		2BBF8B4F2423B772003E1891 /* TestViaplayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B4E2423B772003E1891 /* TestViaplayUITests.swift */; };
 		2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B5F2423B8C4003E1891 /* UIStoryboard+Extension.swift */; };
 		2BBF8B662423B963003E1891 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B652423B963003E1891 /* StartVC.swift */; };
-		2BBF8B682423BAF8003E1891 /* SectionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B672423BAF8003E1891 /* SectionCVC.swift */; };
-		2BBF8B6A2423BE0C003E1891 /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B692423BE0C003E1891 /* SectionCell.swift */; };
+		2BBF8B682423BAF8003E1891 /* SectionsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B672423BAF8003E1891 /* SectionsCVC.swift */; };
+		2BBF8B6A2423BE0C003E1891 /* SectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B692423BE0C003E1891 /* SectionsCell.swift */; };
 		2BCEC1792425124D00E4C6B0 /* ServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC1732425124D00E4C6B0 /* ServiceHelper.swift */; };
 		2BCEC17A2425124D00E4C6B0 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC1742425124D00E4C6B0 /* WebClient.swift */; };
 		2BCEC17B2425124D00E4C6B0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEC1752425124D00E4C6B0 /* ServiceError.swift */; };
@@ -72,8 +72,8 @@
 		2BBF8B502423B772003E1891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF8B5F2423B8C4003E1891 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		2BBF8B652423B963003E1891 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
-		2BBF8B672423BAF8003E1891 /* SectionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCVC.swift; sourceTree = "<group>"; };
-		2BBF8B692423BE0C003E1891 /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		2BBF8B672423BAF8003E1891 /* SectionsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCVC.swift; sourceTree = "<group>"; };
+		2BBF8B692423BE0C003E1891 /* SectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCell.swift; sourceTree = "<group>"; };
 		2BCEC1732425124D00E4C6B0 /* ServiceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceHelper.swift; sourceTree = "<group>"; };
 		2BCEC1742425124D00E4C6B0 /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		2BCEC1752425124D00E4C6B0 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				2BBF8B652423B963003E1891 /* StartVC.swift */,
-				2BBF8B672423BAF8003E1891 /* SectionCVC.swift */,
+				2BBF8B672423BAF8003E1891 /* SectionsCVC.swift */,
+				2BBF8B692423BE0C003E1891 /* SectionsCell.swift */,
 				2B4B5A4924292AAC004E16EC /* SectionCVCHeader.swift */,
-				2BBF8B692423BE0C003E1891 /* SectionCell.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -403,14 +403,14 @@
 				2B4B5A4C24293184004E16EC /* SectionCVCHeaderVM.swift in Sources */,
 				2BCEC1832425133500E4C6B0 /* ContentServer.swift in Sources */,
 				2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */,
-				2BBF8B682423BAF8003E1891 /* SectionCVC.swift in Sources */,
+				2BBF8B682423BAF8003E1891 /* SectionsCVC.swift in Sources */,
 				2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */,
 				2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */,
 				2BCEC17E2425124E00E4C6B0 /* ReachabilityHelper.swift in Sources */,
 				2B4B5A4A24292AAC004E16EC /* SectionCVCHeader.swift in Sources */,
 				2BBF8B662423B963003E1891 /* StartVC.swift in Sources */,
 				2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */,
-				2BBF8B6A2423BE0C003E1891 /* SectionCell.swift in Sources */,
+				2BBF8B6A2423BE0C003E1891 /* SectionsCell.swift in Sources */,
 				2BCEC17C2425124D00E4C6B0 /* Encodable+Extension.swift in Sources */,
 				2BCEC17A2425124D00E4C6B0 /* WebClient.swift in Sources */,
 				2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */,

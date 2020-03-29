@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SectionCVC: UICollectionViewController {
+class SectionsCVC: UICollectionViewController {
     
     // MARK: - Properties
     // MARK: Constants
-    private let reuseIdentifier = "SectionCell_ID"
+    private let reuseIdentifier = "SectionsCell_ID"
     private let blockScrTxt = "Fetching the sections..."
     private let sectionsService = SectionsService()
     private var sections = [SectionItemVM]()     // TODO: Array of VM instad of sections
@@ -63,7 +63,7 @@ class SectionCVC: UICollectionViewController {
             self.sections = sections.map({SectionItemVM(sectionsResponseItem: $0)})
             self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionResponse)
             
-            sleep(1) // to ilustrate....
+            sleep(1) // to ilustrate loading....
             DispatchQueue.main.async {
                 BlockScreen.hideBlocker()
                 self.collectionView.reloadData()
@@ -73,13 +73,13 @@ class SectionCVC: UICollectionViewController {
 }
 
 // MARK: UICollectionViewDataSource
-extension SectionCVC {
+extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sections.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCell
+        let sectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionsCell
         
         
         sectionCell.sectionItemVM = sections[indexPath.row]
@@ -103,7 +103,7 @@ extension SectionCVC {
 
 
 // MARK: UICollectionViewDelegate
-extension SectionCVC {
+extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedSection = self.sections[indexPath.row]
         dataTask = sectionsService.getSection(path: selectedSection.path) { (sectionResponse, serverError) in
@@ -113,7 +113,7 @@ extension SectionCVC {
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension SectionCVC: UICollectionViewDelegateFlowLayout {
+extension SectionsCVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
            layout collectionViewLayout: UICollectionViewLayout,
            sizeForItemAt indexPath: IndexPath) -> CGSize {

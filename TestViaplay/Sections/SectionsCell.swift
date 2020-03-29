@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SectionCell: UICollectionViewCell {
+class SectionsCell: UICollectionViewCell {
     
     // MARK: - API
     var sectionItemVM: SectionItemVM? {
