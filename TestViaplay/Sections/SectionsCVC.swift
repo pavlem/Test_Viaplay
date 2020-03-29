@@ -14,13 +14,11 @@ class SectionsCVC: UICollectionViewController {
     // MARK: Constants
     private let reuseIdentifier = "SectionsCell_ID"
     private let blockScrTxt = "Fetching the sections..."
-    private let sectionsService = SectionsService()
-    private var sections = [SectionsItemVM]()     // TODO: Array of VM instad of sections
-
-    private var sectionCVCHeaderVM: SectionCVCHeaderVM?
     private let collectionViewBackgroundColor = UIColor.gray
-    
+    private let sectionsService = SectionsService()
     // MARK: Vars
+    private var sectionsItems = [SectionsItemVM]()
+    private var sectionCVCHeaderVM: SectionCVCHeaderVM?
     private var dataTask: URLSessionDataTask?
 
     // MARK: - Lifecycle
@@ -52,15 +50,19 @@ class SectionsCVC: UICollectionViewController {
     private func fetchSections() {
         BlockScreen().showBlocker(messageText: blockScrTxt) {}
 
-        self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionResponse, serRrr) in
+        self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionResponse, serviceError) in
             guard let `self` = self else { return }
             sleep(1) // to ilustrate loading....
-            // TODO: Error handling
+            
+            guard serviceError == nil else {
+                self.handle(error: serviceError)
+                return
+            }
 
             guard let sectionResponse = sectionResponse else { return }
             guard let sections = sectionResponse.links?.viaplaySections else { return }
             
-            self.sections = sections.map({SectionsItemVM(sectionsResponseItem: $0)})
+            self.sectionsItems = sections.map({SectionsItemVM(sectionsResponseItem: $0)})
             self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionResponse)
             
             DispatchQueue.main.async {
@@ -69,19 +71,24 @@ class SectionsCVC: UICollectionViewController {
             }
         })
     }
+    
+    private func handle(error: ServiceError?) {
+        // Here error can be handled somehow, like alert on main thread, etc
+        print(error ?? "")
+    }
 }
 
 // MARK: UICollectionViewDataSource
 extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.count
+        return sectionsItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionsCell
         
         
-        sectionCell.sectionItemVM = sections[indexPath.row]
+        sectionCell.sectionItemVM = sectionsItems[indexPath.row]
         return sectionCell
     }
     
@@ -100,12 +107,11 @@ extension SectionsCVC {
     }
 }
 
-
 // MARK: UICollectionViewDelegate
 extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sectionTVC = UIStoryboard.sectionTVC
-        sectionTVC.selectedSection = self.sections[indexPath.row]
+        sectionTVC.selectedSection = self.sectionsItems[indexPath.row]
         navigationController?.pushViewController(sectionTVC, animated: true)
     }
 }

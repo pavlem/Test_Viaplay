@@ -14,6 +14,9 @@ class SectionTVC: UITableViewController {
     var selectedSection: SectionsItemVM?
     
     // MARK: - Properties
+    // MARK: Outlets
+    @IBOutlet weak var sectionTitleLbl: UILabel!
+    @IBOutlet weak var sectionDescriptionLbl: UILabel!
     // MARK: Constants
     private let sectionsService = SectionsService()
     // MARK: Vars
@@ -25,6 +28,19 @@ class SectionTVC: UITableViewController {
                 self.tableView.reloadData()
                 BlockScreen.hideBlocker()
             }
+        }
+    }
+    
+    private var sectionHeaderVM: SectionHeaderVM? {
+        willSet {
+            setHeader(sectionHeaderVM: newValue)
+        }
+    }
+    
+    private func setHeader(sectionHeaderVM: SectionHeaderVM?) {
+        DispatchQueue.main.async {
+            self.sectionTitleLbl.text = sectionHeaderVM?.title
+            self.sectionDescriptionLbl.text = sectionHeaderVM?.description
         }
     }
     
@@ -62,16 +78,19 @@ class SectionTVC: UITableViewController {
             guard let sectionResponse = sectionResponse else { return }
             guard let sectionItems = sectionResponse.links?.viaplayCategoryFilters?.map({SectionItemVM(sectionResponseItem: $0)}) else { return }
             self.sectionItemsVM = sectionItems
-
-            // TODO: SectionTVC header
+            self.sectionHeaderVM = SectionHeaderVM(sectionResponse: sectionResponse)
         }
     }
     
     private func setUI() {
+        sectionTitleLbl.text = ""
+        sectionDescriptionLbl.text = ""
         tableView.tableFooterView = UIView(frame: .zero)
+        navigationItem.title = selectedSection?.title
     }
     
     private func handle(error: ServiceError?) {
+        // Here error can be handled somehow, like alert on main thread, etc
         print(error ?? "")
     }
 }

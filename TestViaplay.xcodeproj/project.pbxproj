@@ -35,6 +35,7 @@
 		2BD9A0092431190500D1494C /* SectionItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A0082431190500D1494C /* SectionItemVM.swift */; };
 		2BD9A00B24311CAD00D1494C /* SectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A00A24311CAD00D1494C /* SectionTVC.swift */; };
 		2BD9A00D24311CBC00D1494C /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A00C24311CBC00D1494C /* SectionCell.swift */; };
+		2BD9A00F24312C4100D1494C /* SectionHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD9A00E24312C4100D1494C /* SectionHeaderVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		2BD9A0082431190500D1494C /* SectionItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionItemVM.swift; sourceTree = "<group>"; };
 		2BD9A00A24311CAD00D1494C /* SectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTVC.swift; sourceTree = "<group>"; };
 		2BD9A00C24311CBC00D1494C /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
+		2BD9A00E24312C4100D1494C /* SectionHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,9 +222,10 @@
 		2BBF8B632423B945003E1891 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */,
 				2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */,
+				2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */,
 				2BD9A0082431190500D1494C /* SectionItemVM.swift */,
+				2BD9A00E24312C4100D1494C /* SectionHeaderVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				2BBF8B682423BAF8003E1891 /* SectionsCVC.swift in Sources */,
 				2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */,
 				2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */,
+				2BD9A00F24312C4100D1494C /* SectionHeaderVM.swift in Sources */,
 				2BCEC17E2425124E00E4C6B0 /* ReachabilityHelper.swift in Sources */,
 				2B4B5A4A24292AAC004E16EC /* SectionsCVCHeader.swift in Sources */,
 				2BD9A00D24311CBC00D1494C /* SectionCell.swift in Sources */,
