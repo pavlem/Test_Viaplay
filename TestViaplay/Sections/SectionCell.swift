@@ -37,7 +37,15 @@ class SectionCell: UITableViewCell {
     private func setUI() {
         titleLbl.font = UIFont.boldSystemFont(ofSize: 17)
         typeLbl.font = UIFont.systemFont(ofSize: 17)
-        titleLbl.textColor = .black
-        typeLbl.textColor = .black
+        titleLbl.textColor = .white
+        typeLbl.textColor = .white
+        
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = .lightGray
+        self.selectedBackgroundView = selectedBackgroundView
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .gray
+        self.backgroundView = backgroundView
     }
 }

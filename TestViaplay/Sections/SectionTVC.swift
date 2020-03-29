@@ -15,6 +15,7 @@ class SectionTVC: UITableViewController {
     
     // MARK: - Properties
     // MARK: Outlets
+    @IBOutlet weak var sectionHeader: UIView!
     @IBOutlet weak var sectionTitleLbl: UILabel!
     @IBOutlet weak var sectionDescriptionLbl: UILabel!
     // MARK: Constants
@@ -83,10 +84,16 @@ class SectionTVC: UITableViewController {
     }
     
     private func setUI() {
+        navigationItem.title = selectedSection?.title.uppercased()
         sectionTitleLbl.text = ""
         sectionDescriptionLbl.text = ""
+        
+        sectionTitleLbl.textColor = .white
+        sectionDescriptionLbl.textColor = .white
+        sectionHeader.backgroundColor = .gray
+        tableView.backgroundColor = .gray
         tableView.tableFooterView = UIView(frame: .zero)
-        navigationItem.title = selectedSection?.title
+        tableView.separatorColor = .white
     }
     
     private func handle(error: ServiceError?) {

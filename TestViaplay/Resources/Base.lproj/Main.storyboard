@@ -200,6 +200,7 @@
                     </tableView>
                     <connections>
                         <outlet property="sectionDescriptionLbl" destination="qT6-Gc-2FO" id="UKP-fy-8K1"/>
+                        <outlet property="sectionHeader" destination="XcA-j0-5L8" id="TV6-Wc-Y8q"/>
                         <outlet property="sectionTitleLbl" destination="ieE-n7-wR7" id="idR-iB-u1Q"/>
                     </connections>
                 </tableViewController>
