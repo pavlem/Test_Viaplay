@@ -63,7 +63,7 @@ class SectionCVC: UICollectionViewController {
             self.sections = sections.map({SectionItemVM(sectionsResponseItem: $0)})
             self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionResponse)
             
-            sleep(2)
+            sleep(1) // to ilustrate....
             DispatchQueue.main.async {
                 BlockScreen.hideBlocker()
                 self.collectionView.reloadData()
@@ -105,18 +105,10 @@ extension SectionCVC {
 // MARK: UICollectionViewDelegate
 extension SectionCVC {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-        
-        let sec = self.sections[indexPath.row]
-        print(sec.url)
-        
-//        https://content.viaplay.se/ios-se/sport2
-        
-        sectionsService.getSection(path: "/sport2") { (secR, serErr) in
+        let selectedSection = self.sections[indexPath.row]
+        dataTask = sectionsService.getSection(path: selectedSection.path) { (sectionResponse, serverError) in
             
-            print("ssss")
         }
-        
     }
 }
 

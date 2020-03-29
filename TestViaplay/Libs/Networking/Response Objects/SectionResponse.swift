@@ -11,7 +11,6 @@ import Foundation
 struct SectionResponseItem: Decodable {
     let title: String?
     let href: String?
-    let tagId: String?
 }
 
 struct SectionResponseLinks: Decodable {

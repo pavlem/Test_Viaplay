@@ -19,3 +19,14 @@ extension SectionItemVM {
         self.title = sectionsResponseItem.title ?? ""
     }
 }
+
+extension SectionItemVM {
+    var path: String {
+        var sectionUrl = self.url
+        let stringsToRemove = ["https://content.viaplay.se/ios-se", "{?dtg}"]
+        for str in stringsToRemove {
+            sectionUrl = sectionUrl.replacingOccurrences(of: str, with: "")
+        }
+        return sectionUrl
+    }
+}
