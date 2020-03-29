@@ -11,16 +11,29 @@ import UIKit
 class BlockScreen: UIView {
     
     // MARK: - API
-    func showBlocker(isOverEntireDeviceWindow: Bool = false, success: @escaping () -> Void) {
+    func showBlocker(isOverEntireDeviceWindow: Bool = false, messageText: String? = nil, messageFont: UIFont = UIFont.systemFont(ofSize: 17), backgroundColor: UIColor = .black, success: @escaping () -> Void) {
         guard let topVC = BlockScreen.topVC else { return }
+    
+        frame = UIScreen.main.bounds
+        setActivityIndicatorAndInfoLbl(messageText: messageText,
+                                       messageFont: messageFont,
+                                       backgroundColor: backgroundColor)
+        
         if isOverEntireDeviceWindow, let nc = topVC as? UINavigationController {
-            nc.navigationBar.layer.zPosition = -1;
+            if nc.navigationBar.layer.zPosition == 0 {
+                nc.navigationBar.layer.zPosition = -1
+            }
         }
+        
+        if let nc = topVC as? UINavigationController {
+            frame.origin.y = nc.navigationBar.frame.height + statusBarFrameHeight
+        }
+        
         topVC.view.addSubview(self)
         alpha = 0
         
         UIView.animate(withDuration: animationDuration, animations: {
-            self.alpha = 0.65
+            self.alpha = 0.6
             success()
         })
     }
@@ -29,8 +42,9 @@ class BlockScreen: UIView {
         guard let topVC = BlockScreen.topVC else { return }
         
         if let nc = topVC as? UINavigationController {
-            nc.navigationBar.layer.zPosition = +1;
-            print("s")
+            if nc.navigationBar.layer.zPosition == -1 {
+                nc.navigationBar.layer.zPosition = 0
+            }
         }
         
         for view in topVC.view.subviews where view is BlockScreen {
@@ -40,7 +54,6 @@ class BlockScreen: UIView {
     
     // MARK: - Properties
     private let animationDuration = 0.5
-    private var infoTxt: String?
     
     private static var topVC: UIViewController? {
         if var topController = UIApplication.shared.delegate?.window??.rootViewController {
@@ -52,17 +65,15 @@ class BlockScreen: UIView {
         return nil
     }
     
-    // MARK: - Inits
-    convenience init(title: String?) {
-        self.init(frame: UIScreen.main.bounds)
-        
-        self.infoTxt = title
-        setupView(message: self.infoTxt)
+    private var statusBarFrameHeight: CGFloat {
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let statusBarFrameHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        return statusBarFrameHeight
     }
     
+    // MARK: - Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,29 +81,41 @@ class BlockScreen: UIView {
     }
     
     // MARK: - Helper
-    private func setupView(message: String?) {
-        backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    private func setActivityIndicatorAndInfoLbl(messageText: String?, messageFont: UIFont, backgroundColor: UIColor) {
+        self.backgroundColor = backgroundColor
         
-        if let msg = message {
-            setActivityIndicatorAndInfoLbl(lblTxt: msg)
-        }
+        setActivityIndicatorView()
+        setMsgLbl(txt: messageText, txtFont: messageFont)
     }
     
-    private func setActivityIndicatorAndInfoLbl(lblTxt: String?, view: UIView? = nil) {
-        let activityView = UIActivityIndicatorView(style: .large)
-        activityView.color = .white
-        activityView.center = center
-        addSubview(activityView)
-        activityView.startAnimating()
+    private func setActivityIndicatorView() {
+        let animatingView = UIActivityIndicatorView(style: .large)
+        animatingView.color = .white
+        animatingView.translatesAutoresizingMaskIntoConstraints = false
+
+        if let nc = BlockScreen.topVC as? UINavigationController {
+            animatingView.frame.origin.y -= nc.navigationBar.frame.height + statusBarFrameHeight
+        }
         
-        guard let infoTxt = lblTxt else { return }
+        addSubview(animatingView)
+        animatingView.startAnimating()
+        // Constraints
+        animatingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        animatingView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    }
+    
+    private func setMsgLbl(txt: String?, txtFont: UIFont) {
         let lbl = UILabel()
-        lbl.text = infoTxt
+        lbl.text = txt
         lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 20)
-        lbl.sizeToFit()
-        lbl.center = activityView.center
-        lbl.frame.origin.y += 30
+        lbl.font = txtFont
+        lbl.textAlignment = .center
+        lbl.numberOfLines = 0
+        lbl.translatesAutoresizingMaskIntoConstraints = false
         addSubview(lbl)
+        // Constraints
+        lbl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        lbl.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50).isActive = true
+        lbl.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
     }
 }

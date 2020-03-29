@@ -13,6 +13,7 @@ class SectionCVC: UICollectionViewController {
     // MARK: - Properties
     // MARK: Constants
     private let reuseIdentifier = "SectionCell_ID"
+    private let blockScrTxt = "Fetching the sections..."
     private let sectionsService = SectionsService()
     private var sections = [SectionItemVM]()     // TODO: Array of VM instad of sections
 
@@ -49,9 +50,8 @@ class SectionCVC: UICollectionViewController {
     }
     
     private func fetchSections() {
+        BlockScreen().showBlocker(messageText: blockScrTxt) {}
 
-        BlockScreen(title: "Fetching the sections...").showBlocker(isOverEntireDeviceWindow: false) {}
-        
         self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionResponse, serRrr) in
             guard let `self` = self else { return }
             
