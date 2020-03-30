@@ -18,11 +18,6 @@ class TestViaplayTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testSectionsCVCHeaderVM() {
         let sectionsResponse1 = SectionsResponse(title: "Nice Title", description: "This is a very, very nice title", links: nil)
@@ -31,7 +26,7 @@ class TestViaplayTests: XCTestCase {
         let sectionsResponse2 = SectionsResponse(title: nil, description: nil, links: nil)
         let sectionCVCHeaderVM2 = SectionsCVCHeaderVM(sectionsResponse: sectionsResponse2)
         
-        XCTAssert(sectionCVCHeaderVM1.title == "Nice Title", "testSectionsCVCHeaderVM not ok")
+        XCTAssert(sectionCVCHeaderVM1.title == "NICE TITLE", "testSectionsCVCHeaderVM not ok")
         XCTAssert(sectionCVCHeaderVM1.description == "Description: This is a very, very nice title", "testSectionsCVCHeaderVM not ok")
         
         XCTAssert(sectionCVCHeaderVM2.title == "No title", "testSectionsCVCHeaderVM not ok")

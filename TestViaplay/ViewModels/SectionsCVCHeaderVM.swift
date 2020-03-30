@@ -15,7 +15,7 @@ struct SectionsCVCHeaderVM {
 
 extension SectionsCVCHeaderVM {
     init(sectionsResponse: SectionsResponse) {
-        title = sectionsResponse.title ?? "No title"
+        title = sectionsResponse.title?.uppercased() ?? "No title"
         description = "Description: " + (sectionsResponse.description ?? "No description")
     }
 }
