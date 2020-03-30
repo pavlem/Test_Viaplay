@@ -14,12 +14,12 @@ class SectionsService: ContentServer {
         
         return client.load(path: ServiceEndpoint.ios, method: .get, params: nil, headers: nil) { (jsonObject, data, serviceErr) in
 
+            guard jsonObject != nil else {
+                completion(nil, serviceErr)
+                return
+            }
+
             do {
-                
-                if let json = jsonObject {
-                    _ = try? JSONSerialization.save(jsonObject: json, toFilename: ServiceEndpoint.ios)
-                }
-                
                 let sectionResponse = try JSONDecoder().decode(SectionsResponse.self, from: data!)
                 completion(sectionResponse, serviceErr)
             } catch let jsonErr {
@@ -34,12 +34,12 @@ class SectionsService: ContentServer {
         
         return client.load(path: ServiceEndpoint.ios + path, method: .get, params: nil, headers: nil) { (jsonObject, data, serviceErr) in
 
+            guard jsonObject != nil else {
+                completion(nil, serviceErr)
+                return
+            }
+
             do {
-                
-                if let json = jsonObject {
-                    _ = try? JSONSerialization.save(jsonObject: json, toFilename: path)
-                }
-                
                 let sectionResponse = try JSONDecoder().decode(SectionResponse.self, from: data!)
                 completion(sectionResponse, serviceErr)
             } catch let jsonErr {
