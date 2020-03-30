@@ -20,6 +20,11 @@ class SectionsService: ContentServer {
             }
 
             do {
+                
+                if let json = jsonObject {
+                    _ = try? JSONSerialization.save(jsonObject: json, toFilename: ServiceEndpoint.ios)
+                }
+
                 let sectionResponse = try JSONDecoder().decode(SectionsResponse.self, from: data!)
                 completion(sectionResponse, serviceErr)
             } catch let jsonErr {
@@ -28,7 +33,6 @@ class SectionsService: ContentServer {
             }
         }
     }
-    
     
     func getSection(path: String, completion: @escaping (SectionResponse?, ServiceError?) -> Void) -> URLSessionDataTask? {
         
@@ -40,6 +44,11 @@ class SectionsService: ContentServer {
             }
 
             do {
+                
+                if let json = jsonObject {
+                    _ = try? JSONSerialization.save(jsonObject: json, toFilename: path)
+                }
+
                 let sectionResponse = try JSONDecoder().decode(SectionResponse.self, from: data!)
                 completion(sectionResponse, serviceErr)
             } catch let jsonErr {
@@ -48,5 +57,4 @@ class SectionsService: ContentServer {
             }
         }
     }
-    
 }
