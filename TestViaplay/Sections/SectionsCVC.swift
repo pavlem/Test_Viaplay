@@ -12,7 +12,8 @@ class SectionsCVC: UICollectionViewController {
     
     // MARK: - Properties
     // MARK: Constants
-    private let reuseIdentifier = "SectionsCell_ID"
+    private let sectionsCellId = "SectionsCell_ID"
+    private let sectionsHeaderId = "CartHeaderCollectionReusableView_ID"
     private let blockScrTxt = "Fetching the sections..."
     private let collectionViewBackgroundColor = UIColor.gray
     private let sectionsService = SectionsService()
@@ -105,7 +106,7 @@ extension SectionsCVC {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionsCell
+        let sectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: sectionsCellId, for: indexPath) as! SectionsCell
         
         
         sectionCell.sectionItemVM = sectionsItems[indexPath.row]
@@ -115,7 +116,7 @@ extension SectionsCVC {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if (kind == UICollectionView.elementKindSectionHeader) {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CartHeaderCollectionReusableView_ID", for: indexPath) as! SectionsCVCHeader
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionsHeaderId, for: indexPath) as! SectionsCVCHeader
             
             if let sectionCVCHeaderVM = self.sectionCVCHeaderVM {
                 headerView.sectionCVCHeaderVM = sectionCVCHeaderVM

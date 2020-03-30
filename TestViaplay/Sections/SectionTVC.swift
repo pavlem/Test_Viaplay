@@ -20,6 +20,7 @@ class SectionTVC: UITableViewController {
     @IBOutlet weak var sectionDescriptionLbl: UILabel!
     // MARK: Constants
     private let sectionsService = SectionsService()
+    private let sectionCellId = "SectionCell_ID"
     // MARK: Vars
     private var dataTask: URLSessionDataTask?
     // MARK: Calculated
@@ -133,7 +134,7 @@ extension SectionTVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionCell = tableView.dequeueReusableCell(withIdentifier: "SectionCell_ID", for: indexPath) as! SectionCell
+        let sectionCell = tableView.dequeueReusableCell(withIdentifier: sectionCellId, for: indexPath) as! SectionCell
         sectionCell.sectionItemVM = sectionItemsVM[indexPath.row]
         return sectionCell
     }
