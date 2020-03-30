@@ -26,7 +26,7 @@ class SectionsCVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchSections()
+        fetchLocalOrRemoteSections()
         setUI()
     }
     
@@ -48,6 +48,23 @@ class SectionsCVC: UICollectionViewController {
         navigationItem.title = "Sections".uppercased()
     }
     
+    private func fetchLocalOrRemoteSections() {
+        if FetchTimeoutHelper.shared.isSectionsFetchNeeded {
+            fetchSections()
+        } else {
+            fetchLocalSections()
+        }
+    }
+    
+    private func fetchLocalSections() {
+        self.fetchLocalSections(withName: ServiceEndpoint.ios) { (sectionsResponse) in
+            guard let sectionResponse = sectionsResponse else {
+                return
+            }
+            self.handle(sectionsResponse: sectionResponse)
+        }
+    }
+    
     private func fetchSections() {
         BlockScreen().showBlocker(messageText: blockScrTxt) {}
 
@@ -57,13 +74,7 @@ class SectionsCVC: UICollectionViewController {
             if let serviceError = serviceError {
                 switch serviceError {
                 case .noInternetConnection:
-                    self.fetchLocalSections(withName: ServiceEndpoint.ios) { (sectionsResponse) in
-                        guard let sectionResponse = sectionsResponse else {
-                            ErrorHandler.handle(error: serviceError, vc: self)
-                            return
-                        }
-                        self.handle(sectionsResponse: sectionResponse)
-                    }
+                    self.fetchLocalSections()
                 default:
                     ErrorHandler.handle(error: serviceError, vc: self)
                 }

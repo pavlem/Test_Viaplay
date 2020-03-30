@@ -9,15 +9,20 @@
 import UIKit
 
 class StartVC: UIViewController {
-
+    
     // MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setUI()
+        initializeFetchDataTimeoutHelper()
     }
     
-    // MARK: - Actions
+    private func initializeFetchDataTimeoutHelper() {
+        let _ = FetchTimeoutHelper.shared
+    }
+    
+    // MARK: - Helper
     private func setUI() {
         navigationController?.isNavigationBarHidden = true
     }

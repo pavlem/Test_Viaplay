@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B31A7DC2432137F004E4151 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B31A7DB2432137F004E4151 /* ErrorHandler.swift */; };
+		2B31A7DE243285E9004E4151 /* FetchTimeoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B31A7DD243285E9004E4151 /* FetchTimeoutHelper.swift */; };
 		2B4B5A4A24292AAC004E16EC /* SectionsCVCHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4924292AAC004E16EC /* SectionsCVCHeader.swift */; };
 		2B4B5A4C24293184004E16EC /* SectionsCVCHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4B24293184004E16EC /* SectionsCVCHeaderVM.swift */; };
 		2B4B5A4E2429357D004E16EC /* SectionsItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		2B31A7DB2432137F004E4151 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		2B31A7DD243285E9004E4151 /* FetchTimeoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTimeoutHelper.swift; sourceTree = "<group>"; };
 		2B4B5A4924292AAC004E16EC /* SectionsCVCHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCVCHeader.swift; sourceTree = "<group>"; };
 		2B4B5A4B24293184004E16EC /* SectionsCVCHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCVCHeaderVM.swift; sourceTree = "<group>"; };
 		2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsItemVM.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				2BB8E0FB243157FF008800FC /* JSONSerialization.swift */,
 				2BB974EC2431FA6700763805 /* AlertHelper.swift */,
 				2B31A7DB2432137F004E4151 /* ErrorHandler.swift */,
+				2B31A7DD243285E9004E4151 /* FetchTimeoutHelper.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				2BD9A0092431190500D1494C /* SectionItemVM.swift in Sources */,
 				2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */,
 				2BCEC17D2425124D00E4C6B0 /* Reachability.swift in Sources */,
+				2B31A7DE243285E9004E4151 /* FetchTimeoutHelper.swift in Sources */,
 				2BCEC1792425124D00E4C6B0 /* ServiceHelper.swift in Sources */,
 				2BCEC1872425155E00E4C6B0 /* SectionsResponse.swift in Sources */,
 				2BCEC185242514A500E4C6B0 /* SectionService.swift in Sources */,
