@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct SectionCVCHeaderVM {
+struct SectionsCVCHeaderVM {
     let title: String
     let description: String
 }
 
-extension SectionCVCHeaderVM {
+extension SectionsCVCHeaderVM {
     init(sectionsResponse: SectionsResponse) {
         title = sectionsResponse.title ?? "No title"
         description = "Description: " + (sectionsResponse.description ?? "No description")

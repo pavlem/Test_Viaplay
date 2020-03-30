@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B31A7DC2432137F004E4151 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B31A7DB2432137F004E4151 /* ErrorHandler.swift */; };
 		2B4B5A4A24292AAC004E16EC /* SectionsCVCHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4924292AAC004E16EC /* SectionsCVCHeader.swift */; };
-		2B4B5A4C24293184004E16EC /* SectionCVCHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */; };
+		2B4B5A4C24293184004E16EC /* SectionsCVCHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4B24293184004E16EC /* SectionsCVCHeaderVM.swift */; };
 		2B4B5A4E2429357D004E16EC /* SectionsItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */; };
 		2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */; };
 		2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */; };
@@ -61,7 +61,7 @@
 /* Begin PBXFileReference section */
 		2B31A7DB2432137F004E4151 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		2B4B5A4924292AAC004E16EC /* SectionsCVCHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCVCHeader.swift; sourceTree = "<group>"; };
-		2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCVCHeaderVM.swift; sourceTree = "<group>"; };
+		2B4B5A4B24293184004E16EC /* SectionsCVCHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsCVCHeaderVM.swift; sourceTree = "<group>"; };
 		2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsItemVM.swift; sourceTree = "<group>"; };
 		2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReq.swift; sourceTree = "<group>"; };
 		2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResponse.swift; sourceTree = "<group>"; };
@@ -149,7 +149,6 @@
 			children = (
 				2BBF8B5D2423B823003E1891 /* App */,
 				2BBF8B612423B92B003E1891 /* Sections */,
-				2BBF8B642423B94F003E1891 /* Models */,
 				2BBF8B632423B945003E1891 /* ViewModels */,
 				2BBF8B622423B939003E1891 /* Components */,
 				2BBF8B5E2423B897003E1891 /* Libs */,
@@ -232,18 +231,11 @@
 			isa = PBXGroup;
 			children = (
 				2B4B5A4D2429357C004E16EC /* SectionsItemVM.swift */,
-				2B4B5A4B24293184004E16EC /* SectionCVCHeaderVM.swift */,
+				2B4B5A4B24293184004E16EC /* SectionsCVCHeaderVM.swift */,
 				2BD9A0082431190500D1494C /* SectionItemVM.swift */,
 				2BD9A00E24312C4100D1494C /* SectionHeaderVM.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		2BBF8B642423B94F003E1891 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		2BCEC172242511EA00E4C6B0 /* Networking */ = {
@@ -422,7 +414,7 @@
 				2BB974ED2431FA6700763805 /* AlertHelper.swift in Sources */,
 				2BCEC17B2425124D00E4C6B0 /* ServiceError.swift in Sources */,
 				2B4B5A4E2429357D004E16EC /* SectionsItemVM.swift in Sources */,
-				2B4B5A4C24293184004E16EC /* SectionCVCHeaderVM.swift in Sources */,
+				2B4B5A4C24293184004E16EC /* SectionsCVCHeaderVM.swift in Sources */,
 				2BD9A00B24311CAD00D1494C /* SectionTVC.swift in Sources */,
 				2BCEC1832425133500E4C6B0 /* ContentServer.swift in Sources */,
 				2B31A7DC2432137F004E4151 /* ErrorHandler.swift in Sources */,

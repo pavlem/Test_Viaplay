@@ -19,7 +19,7 @@ class SectionsCVC: UICollectionViewController {
     private let sectionsService = SectionsService()
     // MARK: Vars
     private var sectionsItems = [SectionsItemVM]()
-    private var sectionCVCHeaderVM: SectionCVCHeaderVM?
+    private var sectionCVCHeaderVM: SectionsCVCHeaderVM?
     private var dataTask: URLSessionDataTask?
 
     // MARK: - Lifecycle
@@ -79,7 +79,7 @@ class SectionsCVC: UICollectionViewController {
     private func handle(sectionsResponse: SectionsResponse) {
         guard let sections = sectionsResponse.links?.viaplaySections else { return }
         self.sectionsItems = sections.map({SectionsItemVM(sectionsResponseItem: $0)})
-        self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionsResponse)
+        self.sectionCVCHeaderVM = SectionsCVCHeaderVM(sectionsResponse: sectionsResponse)
         
         DispatchQueue.main.async {
             BlockScreen.hideBlocker()

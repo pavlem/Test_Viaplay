@@ -15,7 +15,7 @@ class SectionsCVCHeader: UICollectionReusableView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     // MARK: Vars
-    var sectionCVCHeaderVM: SectionCVCHeaderVM? {
+    var sectionCVCHeaderVM: SectionsCVCHeaderVM? {
         willSet {
             if let value = newValue {
                 updateUI(sectionCVCHeaderVM: value)
@@ -42,7 +42,7 @@ class SectionsCVCHeader: UICollectionReusableView {
         self.descriptionLbl.textColor = .white
     }
     
-    private func updateUI(sectionCVCHeaderVM: SectionCVCHeaderVM) {
+    private func updateUI(sectionCVCHeaderVM: SectionsCVCHeaderVM) {
         self.title.text = sectionCVCHeaderVM.title
         self.descriptionLbl.text = sectionCVCHeaderVM.description
     }
