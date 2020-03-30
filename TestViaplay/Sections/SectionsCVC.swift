@@ -58,13 +58,13 @@ class SectionsCVC: UICollectionViewController {
                 case .noInternetConnection:
                     self.fetchLocalSections(withName: ServiceEndpoint.ios) { (sectionsResponse) in
                         guard let sectionResponse = sectionsResponse else {
-                            self.handle(error: serviceError)
+                            ErrorHandler.handle(error: serviceError, vc: self)
                             return
                         }
                         self.handle(sectionsResponse: sectionResponse)
                     }
                 default:
-                    self.handle(error: serviceError)
+                    ErrorHandler.handle(error: serviceError, vc: self)
                 }
                 return
             }
@@ -95,20 +95,6 @@ class SectionsCVC: UICollectionViewController {
         
         let sectionsResponse = try? JSONDecoder().decode(SectionsResponse.self, from: dataLocal)
         completion(sectionsResponse)
-    }
-    
-    // TODO: extract to common Error Helper
-    private func handle(error: ServiceError?) {
-        guard let error = error else { return }
-        
-        switch error {
-        case .noInternetConnection:
-            AlertHelper.simpleAlert(message: "No Internet, please try again later", vc: self) {
-                BlockScreen.hideBlocker()
-            }
-        default:
-            print(error) // Here we can hanlde errors as we wish....
-        }
     }
 }
 

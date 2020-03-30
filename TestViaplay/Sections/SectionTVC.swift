@@ -77,14 +77,14 @@ class SectionTVC: UITableViewController {
                 case .noInternetConnection:
                     self.fetchLocalSectionItems(withName: path) { (sectionResponse) in
                         guard let sectionResponse = sectionResponse else {
-                            self.handle(error: serviceError)
+                            ErrorHandler.handle(error: serviceError, vc: self)
                             return
                         }
                         self.handle(sectionResponse: sectionResponse)
                     }
                     
                 default:
-                    self.handle(error: serviceError)
+                    ErrorHandler.handle(error: serviceError, vc: self)
                 }
                 return
             }
@@ -112,20 +112,6 @@ class SectionTVC: UITableViewController {
         tableView.backgroundColor = .gray
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.separatorColor = .white
-    }
-    
-    // TODO: extract to common Error Helper
-    private func handle(error: ServiceError?) {
-        guard let error = error else { return }
-        
-        switch error {
-        case .noInternetConnection:
-            AlertHelper.simpleAlert(message: "No Internet, please try again later", vc: self) {
-                BlockScreen.hideBlocker()
-            }
-        default:
-            print(error) // Here we can hanlde errors as we wish....
-        }
     }
     
     private func fetchLocalSectionItems(withName jsonName: String, completion: (SectionResponse?) -> ()) {
