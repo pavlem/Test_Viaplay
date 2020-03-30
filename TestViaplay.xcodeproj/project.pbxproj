@@ -13,6 +13,8 @@
 		2B8ABCCB2427FA0200AE52B0 /* SectionReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */; };
 		2B8ABCCD2427FAD600AE52B0 /* SectionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */; };
 		2B8ABCD2242805E400AE52B0 /* BlockScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8ABCD1242805E400AE52B0 /* BlockScreen.swift */; };
+		2BB8E0FC243157FF008800FC /* JSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E0FB243157FF008800FC /* JSONSerialization.swift */; };
+		2BB974ED2431FA6700763805 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB974EC2431FA6700763805 /* AlertHelper.swift */; };
 		2BBF8B2D2423B771003E1891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF8B2C2423B771003E1891 /* AppDelegate.swift */; };
 		2BBF8B342423B771003E1891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B322423B771003E1891 /* Main.storyboard */; };
 		2BBF8B362423B772003E1891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF8B352423B772003E1891 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		2B8ABCCA2427FA0200AE52B0 /* SectionReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReq.swift; sourceTree = "<group>"; };
 		2B8ABCCC2427FAD600AE52B0 /* SectionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionResponse.swift; sourceTree = "<group>"; };
 		2B8ABCD1242805E400AE52B0 /* BlockScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockScreen.swift; sourceTree = "<group>"; };
+		2BB8E0FB243157FF008800FC /* JSONSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerialization.swift; sourceTree = "<group>"; };
+		2BB974EC2431FA6700763805 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		2BBF8B292423B771003E1891 /* TestViaplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestViaplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF8B2C2423B771003E1891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF8B332423B771003E1891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 			children = (
 				2BCEC172242511EA00E4C6B0 /* Networking */,
 				2BBF8B5F2423B8C4003E1891 /* UIStoryboard+Extension.swift */,
+				2BB8E0FB243157FF008800FC /* JSONSerialization.swift */,
+				2BB974EC2431FA6700763805 /* AlertHelper.swift */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB974ED2431FA6700763805 /* AlertHelper.swift in Sources */,
 				2BCEC17B2425124D00E4C6B0 /* ServiceError.swift in Sources */,
 				2B4B5A4E2429357D004E16EC /* SectionsItemVM.swift in Sources */,
 				2B4B5A4C24293184004E16EC /* SectionCVCHeaderVM.swift in Sources */,
@@ -428,6 +435,7 @@
 				2BBF8B6A2423BE0C003E1891 /* SectionsCell.swift in Sources */,
 				2BCEC17C2425124D00E4C6B0 /* Encodable+Extension.swift in Sources */,
 				2BCEC17A2425124D00E4C6B0 /* WebClient.swift in Sources */,
+				2BB8E0FC243157FF008800FC /* JSONSerialization.swift in Sources */,
 				2BD9A0092431190500D1494C /* SectionItemVM.swift in Sources */,
 				2BBF8B602423B8C4003E1891 /* UIStoryboard+Extension.swift in Sources */,
 				2BCEC17D2425124D00E4C6B0 /* Reachability.swift in Sources */,
@@ -606,14 +614,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DT2VAVR98J;
 				INFOPLIST_FILE = TestViaplay/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paja.patak.TestViaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = sprintingsoftware.dsgapps.pavle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = WildcardSprintingSoftware_Dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -623,14 +634,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DT2VAVR98J;
 				INFOPLIST_FILE = TestViaplay/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.paja.patak.TestViaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = sprintingsoftware.dsgapps.pavle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = WildcardSprintingSoftware_Dev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

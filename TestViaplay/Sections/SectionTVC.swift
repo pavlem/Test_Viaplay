@@ -50,7 +50,7 @@ class SectionTVC: UITableViewController {
         super.viewDidLoad()
 
         setUI()
-        fetchSectionItems()
+        fetchSectionItems(forPath: self.selectedSection!.path)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,20 +67,36 @@ class SectionTVC: UITableViewController {
     }
 
     // MARK: - Helper
-    private func fetchSectionItems() {
-        dataTask = sectionsService.getSection(path: selectedSection!.path) { (sectionResponse, serverError) in
-            sleep(2) // Simulate slower data fetch
-
-            guard serverError == nil else {
-                self.handle(error: serverError)
+    private func fetchSectionItems(forPath path: String) {
+        dataTask = sectionsService.getSection(path: path) { (sectionResponse, serverError) in
+            
+            if let serverError = serverError {
+                switch serverError {
+                case .noInternetConnection:
+                    self.fetchLocalSectionItems(withName: path) { (sectionResponse) in
+                        guard let sectionResponse = sectionResponse else {
+                            self.handle(error: serverError)
+                            return
+                        }
+                        self.handle(sectionResponse: sectionResponse)
+                    }
+                    
+                default:
+                    self.handle(error: serverError)
+                }
                 return
             }
             
+            sleep(1) // Simulate slower data fetch
             guard let sectionResponse = sectionResponse else { return }
-            guard let sectionItems = sectionResponse.links?.viaplayCategoryFilters?.map({SectionItemVM(sectionResponseItem: $0)}) else { return }
-            self.sectionItemsVM = sectionItems
-            self.sectionHeaderVM = SectionHeaderVM(sectionResponse: sectionResponse)
+            self.handle(sectionResponse: sectionResponse)
         }
+    }
+    
+    private func handle(sectionResponse: SectionResponse) {
+        guard let sectionItems = sectionResponse.links?.viaplayCategoryFilters?.map({SectionItemVM(sectionResponseItem: $0)}) else { return }
+        self.sectionItemsVM = sectionItems
+        self.sectionHeaderVM = SectionHeaderVM(sectionResponse: sectionResponse)
     }
     
     private func setUI() {
@@ -97,8 +113,27 @@ class SectionTVC: UITableViewController {
     }
     
     private func handle(error: ServiceError?) {
-        // Here error can be handled somehow, like alert on main thread, etc
-        print(error ?? "")
+        guard let error = error else { return }
+        
+        switch error {
+        case .noInternetConnection:
+            AlertHelper.simpleAlert(message: "No Internet, please try again later", vc: self) {
+                BlockScreen.hideBlocker()
+            }
+        default:
+            print(error) // Here we can hanlde errors as we wish....
+        }
+    }
+    
+    private func fetchLocalSectionItems(withName jsonName: String, completion: (SectionResponse?) -> ()) {
+        
+        guard let jsonLocal = try? JSONSerialization.loadJSON(withFilename: jsonName), let dataLocal = try? JSONSerialization.data(withJSONObject: jsonLocal, options: .prettyPrinted) else {
+            completion(nil)
+            return
+        }
+        
+        let sectionResponse = try? JSONDecoder().decode(SectionResponse.self, from: dataLocal)
+        completion(sectionResponse)
     }
 }
 

@@ -45,7 +45,7 @@ class SectionCell: UITableViewCell {
         self.selectedBackgroundView = selectedBackgroundView
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .gray
+        backgroundView.backgroundColor = .darkGray
         self.backgroundView = backgroundView
     }
 }
