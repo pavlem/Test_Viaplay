@@ -15,7 +15,7 @@ struct SectionItemVM {
 
 extension SectionItemVM {
     init(sectionResponseItem: SectionResponseItem) {
-        self.title = sectionResponseItem.title ?? ""
-        self.type = sectionResponseItem.type ?? ""
+        self.title = sectionResponseItem.title?.lowercased().capitalized ?? ""
+        self.type = sectionResponseItem.type?.uppercased() ?? ""
     }
 }

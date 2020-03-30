@@ -15,7 +15,7 @@ struct SectionHeaderVM {
 
 extension SectionHeaderVM {
     init(sectionResponse: SectionResponse) {
-        self.title = sectionResponse.title ?? ""
-        self.description = sectionResponse.description ?? ""
+        self.title = sectionResponse.title?.uppercased() ?? ""
+        self.description = sectionResponse.description?.capitalized ?? ""
     }
 }
