@@ -50,31 +50,65 @@ class SectionsCVC: UICollectionViewController {
     private func fetchSections() {
         BlockScreen().showBlocker(messageText: blockScrTxt) {}
 
-        self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionResponse, serviceError) in
+        self.dataTask = sectionsService.getSections(completion: { [weak self] (sectionsResponse, serviceError) in
             guard let `self` = self else { return }
-            sleep(1) // to ilustrate loading....
-            
-            guard serviceError == nil else {
-                self.handle(error: serviceError)
+           
+            if let serviceError = serviceError {
+                switch serviceError {
+                case .noInternetConnection:
+                    self.fetchLocalSections(withName: ServiceEndpoint.ios) { (sectionsResponse) in
+                        guard let sectionResponse = sectionsResponse else {
+                            self.handle(error: serviceError)
+                            return
+                        }
+                        self.handle(sectionsResponse: sectionResponse)
+                    }
+                default:
+                    self.handle(error: serviceError)
+                }
                 return
             }
-
-            guard let sectionResponse = sectionResponse else { return }
-            guard let sections = sectionResponse.links?.viaplaySections else { return }
             
-            self.sectionsItems = sections.map({SectionsItemVM(sectionsResponseItem: $0)})
-            self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionResponse)
-            
-            DispatchQueue.main.async {
-                BlockScreen.hideBlocker()
-                self.collectionView.reloadData()
-            }
+            sleep(1) // to ilustrate loading....
+            guard let sectionResponse = sectionsResponse else { return }
+            self.handle(sectionsResponse: sectionResponse)
         })
     }
     
+    private func handle(sectionsResponse: SectionsResponse) {
+        guard let sections = sectionsResponse.links?.viaplaySections else { return }
+        self.sectionsItems = sections.map({SectionsItemVM(sectionsResponseItem: $0)})
+        self.sectionCVCHeaderVM = SectionCVCHeaderVM(sectionsResponse: sectionsResponse)
+        
+        DispatchQueue.main.async {
+            BlockScreen.hideBlocker()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func fetchLocalSections(withName jsonName: String, completion: (SectionsResponse?) -> ()) {
+        
+        guard let jsonLocal = try? JSONSerialization.loadJSON(withFilename: jsonName), let dataLocal = try? JSONSerialization.data(withJSONObject: jsonLocal, options: .prettyPrinted) else {
+            completion(nil)
+            return
+        }
+        
+        let sectionsResponse = try? JSONDecoder().decode(SectionsResponse.self, from: dataLocal)
+        completion(sectionsResponse)
+    }
+    
+    // TODO: extract to common Error Helper
     private func handle(error: ServiceError?) {
-        // Here error can be handled somehow, like alert on main thread, etc
-        print(error ?? "")
+        guard let error = error else { return }
+        
+        switch error {
+        case .noInternetConnection:
+            AlertHelper.simpleAlert(message: "No Internet, please try again later", vc: self) {
+                BlockScreen.hideBlocker()
+            }
+        default:
+            print(error) // Here we can hanlde errors as we wish....
+        }
     }
 }
 

@@ -68,21 +68,23 @@ class SectionTVC: UITableViewController {
 
     // MARK: - Helper
     private func fetchSectionItems(forPath path: String) {
-        dataTask = sectionsService.getSection(path: path) { (sectionResponse, serverError) in
+        dataTask = sectionsService.getSection(path: path) { [weak self] (sectionResponse, serviceError) in
+            guard let `self` = self else { return }
+
             
-            if let serverError = serverError {
-                switch serverError {
+            if let serviceError = serviceError {
+                switch serviceError {
                 case .noInternetConnection:
                     self.fetchLocalSectionItems(withName: path) { (sectionResponse) in
                         guard let sectionResponse = sectionResponse else {
-                            self.handle(error: serverError)
+                            self.handle(error: serviceError)
                             return
                         }
                         self.handle(sectionResponse: sectionResponse)
                     }
                     
                 default:
-                    self.handle(error: serverError)
+                    self.handle(error: serviceError)
                 }
                 return
             }
@@ -112,6 +114,7 @@ class SectionTVC: UITableViewController {
         tableView.separatorColor = .white
     }
     
+    // TODO: extract to common Error Helper
     private func handle(error: ServiceError?) {
         guard let error = error else { return }
         
