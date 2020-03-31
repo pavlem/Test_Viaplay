@@ -56,9 +56,12 @@ class SectionsCVC: UICollectionViewController {
         }
     }
     
-    private func fetchLocalSections() {
+    private func fetchLocalSections(errorReceived: ServiceError? = nil) {
         self.fetchLocalSections(withName: ServiceEndpoint.ios) { (sectionsResponse) in
             guard let sectionResponse = sectionsResponse else {
+                if let err = errorReceived {
+                    ErrorHandler.handle(error: err, vc: self)
+                }
                 return
             }
             self.handle(sectionsResponse: sectionResponse)
@@ -74,7 +77,7 @@ class SectionsCVC: UICollectionViewController {
             if let serviceError = serviceError {
                 switch serviceError {
                 case .noInternetConnection:
-                    self.fetchLocalSections()
+                    self.fetchLocalSections(errorReceived: serviceError)
                 default:
                     ErrorHandler.handle(error: serviceError, vc: self)
                 }
